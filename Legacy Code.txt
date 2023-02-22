@@ -1,0 +1,28 @@
+
+"""
+
+def clahee1(img, normalize, clipLimit=1.5, tileGridSize=(8,8)):
+    if (normalize == 1):
+        img2 = cv2.normalize(img, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+    else:
+        img2 = np.copy (img)
+    clahe = cv2.createCLAHE(clipLimit, tileGridSize)
+    img2 [:,:] = clahe.apply(img2[:,:])
+    return img2
+
+def clahee(img, normalize, clipLimit=1.5, tileGridSize=(8,8)):
+    if img.ndim == 2:
+        return clahee1(img, normalize, clipLimit, tileGridSize)
+    if (normalize == 1):
+        img2 = cv2.normalize(img, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+    
+    clahe = cv2.createCLAHE(clipLimit, tileGridSize)
+    img2 [:,:,0] = clahe.apply(img2[:,:,0])
+    img2 [:,:,1] = clahe.apply(img2[:,:,1])
+    img2 [:,:,2] = clahe.apply(img2[:,:,2])
+    return img2
+"""
+#frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#frame_gray_normalized = cv2.normalize(frame_gray, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+#gray_blured_frame = cv2.cvtColor(cv2.blur(frame, (5, 5)), cv2.COLOR_BGR2GRAY)
+#frame_mean_normalized_clahe = clahee1 (frame_mean_normalized, 0, clipLimit=20, tileGridSize=(4, 4))
